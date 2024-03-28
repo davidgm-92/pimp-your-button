@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Slider from "./Slider";
+import PaddingSlider from "./PaddingSlider";
 
 const ButtonPimp = () => {
   const [buttonClasses, setButtonClasses] = useState({
@@ -24,19 +24,20 @@ const ButtonPimp = () => {
   }, [buttonClasses]);
 
   return (
-    <div className="flex flex-col gap-2 mt-10 items-center">
-      <button className={classesString}>Press me</button>
-      <p>{classesString}</p>
-      <Slider
-        property={{
-          text: "Padding X axis",
-          key: "paddingX",
-          baseString: "px-",
-          min: 0,
-          max: 20,
-        }}
-        setProp={setButtonClasses}
-      />
+    <div className="flex gap-2 mt-10 items-center justify-evenly">
+      <div>
+        <div className="flex gap-2">
+          <p>Padding X</p>
+          <PaddingSlider property={"paddingX"} setProp={setButtonClasses} />
+        </div>
+        <div className="flex gap-2">
+          <p>Padding Y</p>
+          <PaddingSlider property={"paddingY"} setProp={setButtonClasses} />
+        </div>
+      </div>
+      <button type="button" className={classesString}>
+        Press me
+      </button>
     </div>
   );
 };
